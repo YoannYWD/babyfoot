@@ -1,17 +1,24 @@
 const socket = io();
 
 //Matchs
+const inputPlayer1= document.querySelector(".game_form__input_player1");
+const inputPlayer2 = document.querySelector(".game_form__input_player2");
+const gameForm = document.querySelector(".game_form");
+const gameCount = document.querySelector(".games__count");
+const gameBox = document.querySelector(".games__history");
+//Messages
+const inputAuthor = document.querySelector(".message_form__input_author");
+const inputMessage = document.querySelector(".message_form__input_message");
+const messageForm = document.querySelector(".message_form");
+const messageBox = document.querySelector(".messages__history");
+
+//Matchs
 socket.emit("get games");
 socket.on("get games", (games) => {
     games.map((game) => {
         addNewGame({ id:game.id, player1:game.player1, player2:game.player2, in_progress:game.in_progress })
     })
 })
-
-const inputPlayer1= document.querySelector(".game_form__input_player1");
-const inputPlayer2 = document.querySelector(".game_form__input_player2");
-const gameForm = document.querySelector(".game_form");
-const gameBox = document.querySelector(".games__history");
 
 const addNewGame = ({ id, player1, player2, in_progress }) => {
     if (in_progress === true) {
@@ -29,6 +36,7 @@ const addNewGame = ({ id, player1, player2, in_progress }) => {
             </div>
         </div>
         `;
+        gameCount.innerHTML++;
         gameBox.innerHTML += game;
     } else {
         const game = `
@@ -90,6 +98,7 @@ socket.on("add game", (data) => {
 });
 
 socket.on("update games", (games) => {
+    gameCount.innerHTML = '';
     gameBox.innerHTML = '';
     console.log(games);
     games.map((game) => {
@@ -104,11 +113,6 @@ socket.on("get message", (messages) => {
         addNewMessage({author:message.author, message:message.message})
     })
 })
-
-const inputAuthor = document.querySelector(".message_form__input_author");
-const inputMessage = document.querySelector(".message_form__input_message");
-const messageForm = document.querySelector(".message_form");
-const messageBox = document.querySelector(".messages__history");
 
 const addNewMessage = ({ author, message }) => {
   const receivedMsg = `
