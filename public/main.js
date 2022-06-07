@@ -6,6 +6,7 @@ const inputPlayer2 = document.querySelector(".game_form__input_player2");
 const gameForm = document.querySelector(".game_form");
 const gameCount = document.querySelector(".games__count");
 const gameBox = document.querySelector(".games__history");
+gameCount.innerHTML = 0;
 //Messages
 const inputAuthor = document.querySelector(".message_form__input_author");
 const inputMessage = document.querySelector(".message_form__input_message");
@@ -98,7 +99,7 @@ socket.on("add game", (data) => {
 });
 
 socket.on("update games", (games) => {
-    gameCount.innerHTML = '';
+    gameCount.innerHTML = 0;
     gameBox.innerHTML = '';
     console.log(games);
     games.map((game) => {
