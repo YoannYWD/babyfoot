@@ -1,0 +1,8 @@
+.games__count {
+    color: #ffffff;
+    padding: 5px;
+    background-color: #0dcaf0;
+    border: 1px solid transparent;
+    border-radius: 5px 10px;
+    display:inline;
+}

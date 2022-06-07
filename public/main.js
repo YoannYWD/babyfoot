@@ -23,14 +23,14 @@ socket.on("get games", (games) => {
 const addNewGame = ({ id, player1, player2, in_progress }) => {
     if (in_progress === true) {
         const game = `
-        <div class="games__game_inprogress">
+        <div class="games__game_inprogress mb-2">
             <div class="row">
-                <div class="col-6">
+                <div class="col-6 text-center">
                     <p>${player1} vs ${player2}</p>
                 </div>
-                <div class="col-6">
-                <button class="game_update__button" value="${id}">
-                    Terminer
+                <div class="col-6 text-center">
+                <button class="game_update__button btn btn-outline-success" value="${id}">
+                    <i class="fa-solid fa-flag-checkered"></i>
                 </button>
                 </div>
             </div>
@@ -40,14 +40,14 @@ const addNewGame = ({ id, player1, player2, in_progress }) => {
         gameBox.innerHTML += game;
     } else {
         const game = `
-        <div class="games__game_inprogress">
+        <div class="games__game_inprogress mb-2">
             <div class="row">
-                <div class="col-6">
-                    <p>${player1} vs ${player2}</p>
+                <div class="col-6 text-center">
+                    <p class="fst-italic fw-lighter">${player1} vs ${player2}</p>
                 </div>
-                <div class="col-6">
-                <button class="game_delete__button" value="${id}">
-                    Supprimer
+                <div class="col-6 text-center">
+                <button class="game_delete__button btn btn-outline-danger" value="${id}">
+                    <i class="fa-solid fa-trash-can"></i>
                 </button>
                 </div>
             </div>
