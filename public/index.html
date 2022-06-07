@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket.io simple chat</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/56f079d2bb.js" crossorigin="anonymous"></script>
+
+    <script src="./main.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <!-- Matchs -->
+            <div class="col-12 col-md-9">
+                <div class="row my-3 p-3">
+                    <div class="col-8 offset-2">
+                        <h1 class="text-center">Les matchs</h1>
+                    </div>
+                    <div class="col-2 text-end mt-1 mt-md-2">
+                        <div id="gamesCount"></div>
+                    </div>
+                </div>
+                <form class="game_form mb-3">
+                    <input type="text" class="game_form__input_player1" placeholder="Joueur 1" />
+                    <input type="text" class="game_form__input_player2" placeholder="Joueur 2" />
+                    <button class="game_form__button" type="submit">
+                      Ajouter
+                    </button>
+                  </form>
+                <div class="games">
+                    <div class="games__history"></div>
+                </div>
+
+            </div>
+
+            <!-- Tchat -->
+            <div class="col-12 col-md-3 my-5">
+                <div class="inbox">
+                  <div class="inbox__messages">
+                    <div class="messages__history"></div>
+                    <div class="fallback"></div>
+                  </div>
+                </div>
+          
+                <form class="message_form">
+                  <input type="text" class="message_form__input_author" placeholder="Nom" />
+                  <input type="text" class="message_form__input_message" placeholder="Message" />
+                  <button class="message_form__button" type="submit">
+                    Ajouter
+                  </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+  </body>
+</html>
