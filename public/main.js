@@ -167,7 +167,7 @@ const displayError = (name, template) => {
         const error = `
         <div class="row">
             <div class="col">
-                <p class="text-center text-warning">Le nom ${name} doit faire moins de 30 caractères.</p>
+                <p class="text-center text-warning text-wrap">Le nom ${name} doit faire moins de 30 caractères.</p>
             </div>
         </div>
         `;
@@ -176,7 +176,7 @@ const displayError = (name, template) => {
         const error = `
         <div class="row">
             <div class="col">
-                <p class="text-center text-warning">Le nom ${name} doit faire moins de 30 caractères.</p>
+                <p class="text-center text-warning text-wrap">Le nom ${name} doit faire moins de 30 caractères.</p>
             </div>
         </div>
         `;
