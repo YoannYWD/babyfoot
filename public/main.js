@@ -6,12 +6,14 @@ const inputPlayer2 = document.querySelector(".game_form__input_player2");
 const gameForm = document.querySelector(".game_form");
 const gameCount = document.querySelector(".games__count");
 const gameBox = document.querySelector(".games__history");
+const displayErrorGame = document.querySelector(".displayErrorGame");
 gameCount.innerHTML = 0;
 //Messages
 const inputAuthor = document.querySelector(".message_form__input_author");
 const inputMessage = document.querySelector(".message_form__input_message");
 const messageForm = document.querySelector(".message_form");
 const messageBox = document.querySelector(".messages__history");
+const displayErrorMessage = document.querySelector(".displayErrorMessage");
 
 //Matchs
 socket.emit("get games");
@@ -78,12 +80,19 @@ const addNewGame = ({ id, player1, player2, in_progress }) => {
 };
 
 gameForm.addEventListener("submit", (e) => {
+  displayErrorGame.innerHTML = '';
   e.preventDefault();
   if (!inputPlayer1.value) {
     return;
   }
+  if (inputPlayer1.value.length > 30) {
+    return displayError(inputPlayer1.value, 'game');
+  }
   if (!inputPlayer2.value) {
     return;
+  }
+  if (inputPlayer2.value.length > 30) {
+     return displayError(inputPlayer2.value, 'game');
   }
   socket.emit("add game", {
     player1: inputPlayer1.value,
@@ -129,9 +138,13 @@ const addNewMessage = ({ author, message }) => {
 };
 
 messageForm.addEventListener("submit", (e) => {
+  displayErrorMessage.innerHTML = '';
   e.preventDefault();
   if (!inputAuthor.value) {
     return;
+  }
+  if (inputAuthor.value.length > 30) {
+    return displayError(inputAuthor.value, 'message');
   }
   if (!inputMessage.value) {
     return;
@@ -148,3 +161,25 @@ socket.on("add message", function (data) {
   addNewMessage({ author: data.author, message: data.message });
 });
 
+// Affichage erreurs
+const displayError = (name, template) => {
+    if (template === 'game') {
+        const error = `
+        <div class="row">
+            <div class="col">
+                <p class="text-center text-warning">Le nom ${name} doit faire moins de 30 caractères.</p>
+            </div>
+        </div>
+        `;
+        displayErrorGame.innerHTML += error;
+    } else if (template === 'message') {
+        const error = `
+        <div class="row">
+            <div class="col">
+                <p class="text-center text-warning">Le nom ${name} doit faire moins de 30 caractères.</p>
+            </div>
+        </div>
+        `;
+        displayErrorMessage.innerHTML += error;
+    }
+}
