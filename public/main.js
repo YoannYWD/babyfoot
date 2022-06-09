@@ -110,7 +110,6 @@ socket.on("add game", (data) => {
 socket.on("update games", (games) => {
     gameCount.innerHTML = 0;
     gameBox.innerHTML = '';
-    console.log(games);
     games.map((game) => {
         addNewGame({ id:game.id, player1:game.player1, player2:game.player2, in_progress:game.in_progress })
     })
