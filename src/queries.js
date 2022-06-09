@@ -1,5 +1,5 @@
 const getGames = 'SELECT * FROM games';
-const getGameById = 'SELECT * FROM games WHERE player = $1';
+const getGameById = 'SELECT * FROM games WHERE id = $1';
 const addGame = 'INSERT INTO games (player1, player2, in_progress) VALUES ($1, $2, $3) RETURNING id';
 const updateGame = 'UPDATE games SET in_progress = $1 WHERE id = $2';
 const deleteGame = 'DELETE FROM games WHERE id = $1';
